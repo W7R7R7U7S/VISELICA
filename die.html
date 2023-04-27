@@ -109,9 +109,13 @@
         background-color: #eee;
         cursor: pointer;
       }
+            button.active {
+        background-color: #ccc;
+      }
       input {
         padding: 8px;
         font-size: 15px;
+        margin: 50px;
       }
     </style>
   </head>
@@ -289,7 +293,7 @@
   
   // функция для обновления отображения оставшихся попыток
   function updateRemainingGuesses() {
-    remainingGuessesElement.innerHTML = remainingGuesses;
+    remainingGuessesElement.innerHTML = 'Попытки: ' + remainingGuesses;
   }
 
   // функция для обновления отображения виселицы

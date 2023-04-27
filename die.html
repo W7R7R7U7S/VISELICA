@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Игра "Виселица"</title>
     <style>
       /* стили для отображения виселицы и клавиатуры */
-      button {
-        display: inline-block;
-        padding: 8px;
-        margin: 4px;
-        font-size: 20px;
-        border: none;
-        background-color: #eee;
-        cursor: pointer;
-      }
       #hangman {
         width: 300px;
         height: 300px;
@@ -108,6 +100,19 @@
         border: 2px solid black;
         display: none;
       }
+      button {
+        display: inline-block;
+        padding: 8px;
+        margin: 4px;
+        font-size: 20px;
+        border: none;
+        background-color: #eee;
+        cursor: pointer;
+      }
+      input {
+        padding: 8px;
+        font-size: 15px;
+      }
     </style>
   </head>
   <body>
@@ -131,7 +136,7 @@
       <p id="remainingGuesses"></p>
       <form>
         <label for="guess">Введите букву:</label>
-        <input type="text" id="guess" name="guess">
+        <input type="text" id="guess">
         <input type="button" value="Угадать" onclick="guessLetter()">
       </form>
       <!-- Создаем кнопки для букв русского алфавита -->
@@ -180,10 +185,10 @@
         button.addEventListener('click', () => {
           // Если нажата кнопка delete, удаляем последний символ из поля ввода
           if (button.id === 'delete-button') {
-            input.value = input.value.slice(0, -1);
+            guess.value = guess.textContent.slice(0, -1);
           } else {
             // Иначе добавляем текст кнопки в поле ввода
-            input.value += button.textContent;
+            guess.value += button.textContent;
           }
           // Делаем кнопку активной
           button.classList.add('active');
@@ -218,7 +223,7 @@
       const guess = document.getElementById('guess').value.toLowerCase();
       // проверяем, что введена только одна буква
       if (guess.length !== 1) {
-        alert('Пожалуйста, введите только одну букguessву.');
+        alert('Пожалуйста, введите только одну букву.');
         return;
       }
       // проверяем, что введенный символ является буквой

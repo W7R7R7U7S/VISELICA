@@ -3,7 +3,16 @@
   <head>
     <title>Игра "Виселица"</title>
     <style>
-      /* стили для отображения виселицы */
+      /* стили для отображения виселицы и клавиатуры */
+      button {
+        display: inline-block;
+        padding: 8px;
+        margin: 4px;
+        font-size: 20px;
+        border: none;
+        background-color: #eee;
+        cursor: pointer;
+      }
       #hangman {
         width: 300px;
         height: 300px;
@@ -115,16 +124,71 @@
       <div id="left-leg"></div>
       <div id="right-leg"></div>
     </div>
-    <p id="secretWord"></p>
-    <p id="guesses"></p>
-    <p id="result"></p>
-    <p id="remainingGuesses"></p>
-    <form>
-      <label for="guess">Введите букву:</label>
-      <input type="text" id="guess" name="guess">
-      <input type="button" value="Угадать" onclick="guessLetter()">
-    </form>
+    <div id="keyboard">
+      <p id="secretWord"></p>
+      <p id="guesses"></p>
+      <p id="result"></p>
+      <p id="remainingGuesses"></p>
+      <form>
+        <label for="guess">Введите букву:</label>
+        <input type="text" id="guess" name="guess">
+        <input type="button" value="Угадать" onclick="guessLetter()">
+      </form>
+      <!-- Создаем кнопки для букв русского алфавита -->
+      <button>А</button>
+      <button>Б</button>
+      <button>В</button>
+      <button>Г</button>
+      <button>Д</button>
+      <button>Е</button>
+      <button>Ё</button>
+      <button>Ж</button>
+      <button>З</button>
+      <button>И</button>
+      <button>Й</button>
+      <button>К</button>
+      <button>Л</button>
+      <button>М</button>
+      <button>Н</button>
+      <button>О</button>
+      <button>П</button>
+      <button>Р</button>
+      <button>С</button>
+      <button>Т</button>
+      <button>У</button>
+      <button>Ф</button>
+      <button>Х</button>
+      <button>Ц</button>
+      <button>Ч</button>
+      <button>Ш</button>
+      <button>Щ</button>
+      <button>Ъ</button>
+      <button>Ы</button>
+      <button>Ь</button>
+      <button>Э</button>
+      <button>Ю</button>
+      <button>Я</button>
+
+      <!-- Создаем кнопку delete -->
+      <button id="delete-button">delete</button>
+    </div>
     <script>
+      // Получаем ссылки на все кнопки
+      const buttons = document.querySelectorAll('button');
+      // Добавляем обработчик событий на каждую кнопку
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          // Если нажата кнопка delete, удаляем последний символ из поля ввода
+          if (button.id === 'delete-button') {
+            input.value = input.value.slice(0, -1);
+          } else {
+            // Иначе добавляем текст кнопки в поле ввода
+            input.value += button.textContent;
+          }
+          // Делаем кнопку активной
+          button.classList.add('active');
+        });
+      });
       // список слов для угадывания
       const words = ['яблоко', 'апельсин', 'ананас', 'манго', 'банан'];
       // выбираем случайное слово из списка
@@ -154,7 +218,7 @@
       const guess = document.getElementById('guess').value.toLowerCase();
       // проверяем, что введена только одна буква
       if (guess.length !== 1) {
-        alert('Пожалуйста, введите только одну букву.');
+        alert('Пожалуйста, введите только одну букguessву.');
         return;
       }
       // проверяем, что введенный символ является буквой

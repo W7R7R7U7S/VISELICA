@@ -16,6 +16,12 @@
       h3 {
         font-size: 2em;
       }
+      #modalText {
+        font-size: 1.3em;
+      }
+      #modalText2 {
+        font-size: 1.3em;
+      }
       #guess {
         font-size: 1.5em;
         border: 2px solid black;
@@ -275,6 +281,7 @@
       <div id="myModalLost" class="modalLoser">
         <div class="modal-content">
           <h2>Вы проиграли!</h2>
+          <p id="modalText2">Загаданное слово было: <span id="modalText"></span></p>
           <button onclick="startNewGameLoser()">Начать заново</button>
          </div>
       </div>
@@ -388,6 +395,8 @@
 
       // Функция для открытия модального окна
       function openModalLost() {
+        var modalText = document.getElementById("modalText")
+        modalText.innerHTML = secretWord;
         modalLoser.style.display = "block";
       }
       // Функция для открытия модального окна
@@ -462,10 +471,9 @@
       });
       // проверяем, угадано ли все слово
       if (checkWin()) {
-        resultElement.innerHTML = 'Поздравляем, вы выиграли!';
         openModalWin();
       }
-    } else {
+      } else {
       guessedLettersFalse.push(guess);
       // блокируем использованные кнопки
       document.querySelectorAll(".key").forEach(function(button) {
@@ -481,88 +489,87 @@
       updateHangman();
       // проверяем, закончились ли попытки
       if (remainingGuesses === 0) {
-        resultElement.innerHTML = 'Вы проиграли. Загаданное слово было: ' + secretWord;
         openModalLost();
-      }
-    }
-    // очищаем поле ввода
-    document.getElementById('guess').value = '';
-  }
-
-  // функция для обновления отображения угаданных букв
-  function updateGuessedLetters() {
-    let displayString = '';
-    for (let i = 0; i < secretWord.length; i++) {
-      if (guessedLetters.includes(secretWord[i])) {
-        displayString += secretWord[i] + ' ';
-      } else {
-        displayString += '_ ';
-      }
-    }
-    secretWordElement.innerHTML = displayString;
-  }
-
-  // функция для проверки, угадано ли все слово
-  function checkWin() {
-     for (let i = 0; i < secretWord.length; i++)
-      { if (!guessedLetters.includes(secretWord[i]))
-        { 
-          return false;
         }
-      } return true; 
-  }
-  
-  // функция для обновления отображения оставшихся попыток
-  function updateRemainingGuesses() {
-    remainingGuessesElement.innerHTML = 'Попытки: ' + remainingGuesses;
-    remainingGuessesElement.classList.add('blink');
-    setTimeout(() => {
-      remainingGuessesElement.classList.remove('blink');
-    }, 1000)
-  }
-
-  // функция для обновления отображения виселицы
-  function updateHangman() {
-    switch (remainingGuesses) {
-      case 9:
-        base4Element.style.display = 'block';
-        break;
-      case 8:
-        base3Element.style.display = 'block';
-        break;
-      case 7:
-        base2Element.style.display = 'block';
-        break;
-      case 6:
-        base1Element.style.display = 'block';
-        break;
-      case 5:
-        headElement.style.display = 'block';
-        break;
-      case 4:
-        bodyElement.style.display = 'block';
-        break;
-      case 3:
-        leftArmElement.style.display = 'block';
-        break;
-      case 2:
-        rightArmElement.style.display = 'block';
-        break;
-      case 1:
-        leftLegElement.style.display = 'block';
-        break;
-      case 0:
-        rightLegElement.style.display = 'block';
-        break;
+      }
+      // очищаем поле ввода
+      document.getElementById('guess').value = '';
     }
-  }
-  // обработчик события для кнопки "Угадать"
-  document.getElementById('guessButton').addEventListener('click', guessLetter);
 
-  // инициализация отображения
-  updateGuessedLetters();
-  updateRemainingGuesses();
-  updateHangman();
-</script>
-</body>
+    // функция для обновления отображения угаданных букв
+    function updateGuessedLetters() {
+      let displayString = '';
+      for (let i = 0; i < secretWord.length; i++) {
+        if (guessedLetters.includes(secretWord[i])) {
+          displayString += secretWord[i] + ' ';
+        } else {
+          displayString += '_ ';
+        }
+      }
+      secretWordElement.innerHTML = displayString;
+    }
 
+    // функция для проверки, угадано ли все слово
+    function checkWin() {
+      for (let i = 0; i < secretWord.length; i++)
+        { if (!guessedLetters.includes(secretWord[i]))
+          { 
+            return false;
+          }
+        } return true; 
+    }
+  
+    // функция для обновления отображения оставшихся попыток
+    function updateRemainingGuesses() {
+      remainingGuessesElement.innerHTML = 'Попытки: ' + remainingGuesses;
+      remainingGuessesElement.classList.add('blink');
+      setTimeout(() => {
+        remainingGuessesElement.classList.remove('blink');
+      }, 1000)
+    }
+
+    // функция для обновления отображения виселицы
+    function updateHangman() {
+      switch (remainingGuesses) {
+        case 9:
+          base4Element.style.display = 'block';
+          break;
+        case 8:
+          base3Element.style.display = 'block';
+          break;
+        case 7:
+          base2Element.style.display = 'block';
+          break;
+        case 6:
+          base1Element.style.display = 'block';
+          break;
+        case 5:
+          headElement.style.display = 'block';
+          break;
+        case 4:
+          bodyElement.style.display = 'block';
+          break;
+        case 3:
+          leftArmElement.style.display = 'block';
+          break;
+        case 2:
+          rightArmElement.style.display = 'block';
+          break;
+        case 1:
+          leftLegElement.style.display = 'block';
+          break;
+        case 0:
+          rightLegElement.style.display = 'block';
+          break;
+      }
+    }
+    // обработчик события для кнопки "Угадать"
+    document.getElementById('guessButton').addEventListener('click', guessLetter);
+
+    // инициализация отображения
+    updateGuessedLetters();
+    updateRemainingGuesses();
+    updateHangman();
+    </script>
+  </body>
+</html>

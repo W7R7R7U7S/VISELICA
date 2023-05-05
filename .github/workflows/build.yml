@@ -1,4 +1,4 @@
-name: HTML Lint
+name: Build
 on:
   push:
     branches:

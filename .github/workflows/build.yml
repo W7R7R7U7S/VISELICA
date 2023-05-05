@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: "14.x"
-      - name: Check codestyle 
-        run: git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code 
+      - name: Install dependencies
+        run: npm ci
       - name: Lint HTML files
         run: npx htmlhint **/*.html

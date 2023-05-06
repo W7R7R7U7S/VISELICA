@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title id="Title">Игра "Виселица"</title>
     <style>
+      /* стили отображения фона страницы */
       body {
         background-color: #e9f0c5;
       }
+      /* стили отображения заголовков блоков */
       h1 {
         text-align: center;
       }
@@ -16,17 +18,19 @@
       h3 {
         font-size: 2em;
       }
+      /* стили для модального окна проигрыша */
       #modalText {
         font-size: 1.3em;
       }
       #modalText2 {
         font-size: 1.3em;
       }
+      /* стииль отображения поле ввода на странице */
       #guess {
         font-size: 1.5em;
         border: 2px solid black;
       }
-      /* стили для отображения виселицы и клавиатуры */
+      /* стили для отображения виселицы */
       #hangman {
         width: 300px;
         height: 300px;
@@ -124,6 +128,7 @@
         border: 2px solid black;
         display: none;
       }
+      /* сили отображения клавиатуры и кнопок клавиатуры */
       button {
         padding: 10px;
         margin: 5px;
@@ -208,7 +213,7 @@
         color: #000;
         text-decoration: none;
         cursor: pointer;
-      }
+      } /* Стили  отбражения модального окна с выбором тем */
       #StartWindow {
         position: fixed;
         top: 0;
@@ -368,6 +373,7 @@
         var words = themes[theme];
         secretWord = words[Math.floor(Math.random() * words.length)];
         closeStartWindow();
+        updateGuessedLetters();
       }
       function closeStartWindow(){
         StartWindow.style.display='none';

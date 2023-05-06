@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title id="Title">Игра "Виселица"</title>
     <style>
-      /* стили отображения фона страницы */
+      /* Стили отображения фона страницы */
       body {
         background-color: #e9f0c5;
       }
-      /* стили отображения заголовков блоков */
+      /* Стили отображения заголовочных блоков */
       h1 {
         text-align: center;
       }
@@ -18,19 +18,19 @@
       h3 {
         font-size: 2em;
       }
-      /* стили для модального окна проигрыша */
+      /* Стили для модального окна проигрыша */
       #modalText {
         font-size: 1.3em;
       }
       #modalText2 {
         font-size: 1.3em;
       }
-      /* стииль отображения поле ввода на странице */
+      /* Стили для отображения поле ввода на странице */
       #guess {
         font-size: 1.5em;
         border: 2px solid black;
       }
-      /* стили для отображения виселицы */
+      /* Стили для отображения виселицы */
       #hangman {
         width: 300px;
         height: 300px;
@@ -128,7 +128,7 @@
         border: 2px solid black;
         display: none;
       }
-      /* сили отображения клавиатуры и кнопок клавиатуры */
+      /* Стили отображения клавиатуры и кнопок клавиатуры */
       button {
         padding: 10px;
         margin: 5px;
@@ -163,7 +163,7 @@
       #keyboard div {
         position: absolute;
       }
-      /* Скрываем модальное окно по умолчанию */
+      /* Стили для скрытия модаьного окна проигрыша */
       .modalWiner {
       display: none;
       position: fixed;
@@ -176,7 +176,7 @@
       background-color: rgba(0,0,0,0.4);
       }
 
-      /* Скрываем модальное окно по умолчанию */
+      /* Стили для скрытия модаьного окна выигрыша*/
       .modalLoser {
       display: none;
       position: fixed;
@@ -199,21 +199,7 @@
         text-align: center;
       }
 
-      /* Стили для кнопки закрытия модального окна */
-      .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-
-      /* Стили для кнопки закрытия модального окна при наведении на нее курсора мыши */
-      .close:hover,
-      .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      } /* Стили  отбражения модального окна с выбором тем */
+      /* Стили отбражения модального окна выбора тем */
       #StartWindow {
         position: fixed;
         top: 0;
@@ -228,29 +214,40 @@
         animation: fade .6s;
         overflow: auto;
       }
+
+      /* Стили для отображения загаданного слова в виде _ */
       #secretWord {
         font-size: 3em;
         text-align: center;
         font-family: Arial;
       }
+
+      /* Стили для отображения поле ввода*/
       #inputText {
         font-size: 1.2em;
       }
+
+      /* Стили для отображения кнопки Угадать*/
       #inputButtonText {
         font-size: 1.2em;
         background-color: #adeede;
       }
+
+      /* Стили для отображения количества попыток*/
       #remainingGuesses {
         font-size: 1.5em;
         font-family: Arial;
         text-align: right;
         margin-right: 25%;
       }
+
+      /* Стили для анимации мигания количества попыток*/
       @keyframes blink {
         0%{ color: red; }
         50%{ color: transparent; }
         100%{ color: red; }
       }
+
       .blink {
         animation: blink 1s;
       }
@@ -282,7 +279,7 @@
           <input type="button" value="Угадать" id="inputButtonText" onclick="guessLetter() ">
         </form>
       </div>
-      <!--код для модального проигрыша окна-->
+      <!--Код для модального проигрыша окна-->
       <div id="myModalLost" class="modalLoser">
         <div class="modal-content">
           <h2>Вы проиграли!</h2>
@@ -290,13 +287,14 @@
           <button onclick="startNewGameLoser()">Начать заново</button>
          </div>
       </div>
-      <!--код для модального выигрыша окна-->
+      <!--Код для модального выигрыша окна-->
       <div id="myModalWin" class="modalWiner">
         <div class="modal-content">
           <h2>Вы выиграли!</h2>
           <button onclick="startNewGameWiner()">Начать заново</button>
           </div>
       </div>
+      <!-- Код для модального окна выбора тем-->>
       <div id="StartWindow" class="modal">
         <div class="modal-content">
           <h3>Выберите тему:</h3>
@@ -357,10 +355,9 @@
       var inputField = document.getElementById("guess");
       inputField.value = letter;
       }
-      // списки слов для каждой темы
-      var chooseWord = "";
+      // Переменная для хранения выбранного слова
       var secretWord = [];
-
+      // Списки слов для каждой темы
       var themes = {
       'Фрукты' : ['БАНАН', 'АПЕЛЬСИН', 'АНАНАС', 'АРБУЗ', 'ВИНОГРАД', 'ГРАНАТ', 'ЛИМОН', 'МАНГО', 'ПЕРСИК'],
       'Насекомые' : ['ПАУК', 'МУХА', 'КОМАР', 'СТРЕКОЗА', 'КУЗНЕЧИК', 'КЛОП', 'КОРОЕД'],
@@ -368,68 +365,68 @@
       'Цвета' : ['ЗЕЛЕНЫЙ', 'КРАСНЫЙ', 'ЧЕРНЫЙ', 'КОРИЧНЕВЫЙ', 'ЖЕЛТЫЙ', 'ОРАНЖЕВЫЙ', 'СИНИЙ', 'ГОЛУБОЙ', 'ФИОЛЕТОВЫЙ', 'СЕРЫЙ'],
       'Страны' : ['АВСТРАЛИЯ', 'АРМЕНИЯ', 'БЕЛОРУССИЯ', 'БРАЗИЛИЯ', 'ВЕНГРИЯ', 'ГВИНЕЯ', 'ГРЕЦИЯ', 'ДАНИЯ', 'ИРАН', 'КАНАДА', 'КОЛУМБИЯ', 'КОРЕЯ', 'ЯПОНИЯ', 'ВЕЛИКОБРИТАНИЯ']
       }
-      // выбор случайного слова из списка
+      // Функция выбора случайного слова из списка
       function startGame(theme) {
         var words = themes[theme];
         secretWord = words[Math.floor(Math.random() * words.length)];
         closeStartWindow();
         updateGuessedLetters();
       }
+      // Функция для скрытия модального окна выбра тем
       function closeStartWindow(){
         StartWindow.style.display='none';
       }
-      // массив для всех отслеживания угаданных букв
+      // Массив для отслеживания всех угаданных букв
       var guessedLetters = [];
-      // массив для отслеживвания не верно угаданных букв
+      // Массив для отслеживвания не верно угаданных букв
       var guessedLettersFalse = [];
-      // функция для блокировки кнопки при верно угаданной буквы
+      // Функция для блокировки кнопки при верно угаданной буквы
       function blockButtonTrue(button) {
       button.classList.add("usedTrue");
       button.disabled = true;
       }
-      // функция дял блокировки кнопки при не верно угаданной буквы
+      // Функция дял блокировки кнопки при не верно угаданной буквы
       function blockButtonFalse(button) {
       button.classList.add("usedFalse");
       button.disabled = true;
       }
-      // Получаем ссылку на модальное проигрыша окно и кнопку закрытия
+      // Получаем ссылку на модальное проигрыша окно
       var modalLoser = document.getElementById("myModalLost");
       var span = document.getElementsByClassName("close")[0];
-      // Получаем ссылку на модальное выигрыша окно и кнопку закрытия
+      // Получаем ссылку на модальное выигрыша окно
       var modalWiner = document.getElementById("myModalWin");
       var span = document.getElementsByClassName("close")[0];
-
-      // Функция для открытия модального окна
+      // Функция для открытия модального окна проигрыша
       function openModalLost() {
         var modalText = document.getElementById("modalText")
         modalText.innerHTML = secretWord;
         modalLoser.style.display = "block";
       }
-      // Функция для открытия модального окна
+      // Функция для открытия модального окна выигрыша
       function openModalWin() {
         modalWiner.style.display = "block";
       }
-      // Функция для закрытия модального окна
+      // Функция для закрытия модального окна проигрыша
       function closeModalLost() {
         modalLoser.style.display = "none";
       }
-      // Функция для закрытия модального окна
-      function closeModalLost() {
+      // Функция для закрытия модального окна выигрыша
+      function closeModalWin() {
         modalWiner.style.display = "none";
       }
-      // Функция для запуска новой игры
+      // Функция для запуска новой игры при проигрыше
       function startNewGameLoser() {
         location.reload();
         closeModalLost();
       }
-      // Функция для запуска новой игры
+      // Функция для запуска новой игры при выигрыше
       function startNewGameWiner() {
         location.reload();
         closeModalWin();
       }
-      // количество попыток, оставшихся у игрока 
+      // Количество попыток, оставшихся у игрока 
       let remainingGuesses = 10; 
-      // элементы страницы, с которыми будем работать 
+      // Элементы страницы, с которыми будем работать 
       const secretWordElement = document.getElementById('secretWord');
       const guessesElement = document.getElementById('guesses');
       const resultElement = document.getElementById('result');
@@ -444,50 +441,49 @@
       const rightArmElement = document.getElementById('right-arm');
       const leftLegElement = document.getElementById('left-leg');
       const rightLegElement = document.getElementById('right-leg');
-      
-      // функция, которая будет вызываться при каждой попытке угадать букву
+      // Функция, которая будет вызываться при каждой попытке угадать букву
     function guessLetter() {
       const guess = document.getElementById('guess').value;
-      // проверяем, что введена только одна буква
+      // Проверяем, что введена только одна буква при вводе с физической клавиатуры
       if (guess.length !== 1) {
         alert('Пожалуйста, введите букву.');
         return;
       }
-      // проверяем, что введенный символ является буквой
+      // Проверяем, что введенный символ является буквой
       if (!guess.match(/[A-ZА-Я]/)) {
         alert('Пожалуйста, введите букву.');
         return;
       }
-      // проверяем, что буква не была угадана ранее
+      // Проверяем, что буква не была угадана ранее
       if (guessedLetters.includes(guess)) {
         alert('Вы уже угадывали эту букву.');
         return;
       }
-      // добавляем букву в список угаданных и блокируем кнопку
+      // Добавляем букву в список угаданных и блокируем кнопку
       guessedLetters.push(guess);
-      // проверяем, есть ли угаданная буква в загаданном слове
+      // Проверяем, есть ли угаданная буква в загаданном слове
       if (secretWord.includes(guess)) {
-      // обновляем отображение угаданных букв
+      // Обновляем отображение угаданных букв
       updateGuessedLetters();
-      // блокируем использованные кнопки
+      // Блокируем использованные кнопки
       document.querySelectorAll(".key").forEach(function(button) {
         if (guessedLetters.includes(button.innerHTML)) {
           blockButtonTrue(button);
         }
       });
-      // проверяем, угадано ли все слово
+      // Проверяем, угадано ли все слово
       if (checkWin()) {
         openModalWin();
       }
       } else {
       guessedLettersFalse.push(guess);
-      // блокируем использованные кнопки
+      // Блокируем использованные кнопки
       document.querySelectorAll(".key").forEach(function(button) {
         if (guessedLettersFalse.includes(button.innerHTML)) {
           blockButtonFalse(button);
         }
       });
-      // уменьшаем количество попыток
+      // Уменьшаем количество попыток
       remainingGuesses--;
       // обновляем отображение оставшихся попыток
       updateRemainingGuesses();

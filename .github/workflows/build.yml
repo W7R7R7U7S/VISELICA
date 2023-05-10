@@ -26,6 +26,9 @@ jobs:
 
       - name: Install ESLint
         run: npm install eslint --save-dev
+        
+      - name: Install eslint-config-standard-with-typescrip
+        run: npm install eslint-config-standard-with-typescript --save-dev
 
       - name: Install eslint-plugin-import
         run: npm install eslint-plugin-import --save-dev

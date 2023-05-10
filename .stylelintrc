@@ -1,9 +1,4 @@
 {
-  "rules": {
-    "color-no-invalid-hex": true,
-    "declaration-block-no-duplicate-properties": true,
-    "declaration-block-no-shorthand-property-overrides": true,
-    "selector-pseudo-element-no-unknown": true,
-    "selector-pseudo-class-no-unknown": true
-  }
+  "extends": "stylelint-config-recommended"
 }
+

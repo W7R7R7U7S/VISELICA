@@ -23,6 +23,9 @@ jobs:
 
       - name: Install dependencies
         run: npm build
+        
+      - name: Install ESlint
+        run: npm install eslint-plugin-standard@latest --save-dev
 
       - name: Build assets
         run: |

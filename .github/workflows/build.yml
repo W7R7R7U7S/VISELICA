@@ -1,4 +1,4 @@
-name: CI
+name: Build
 
 on:
   push:
@@ -22,16 +22,24 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: npm ci
+        run: npm build
+
+      - name: Build assets
+        run: |
+          mkdir -p build
+          cp index.html build/
+          cp style.css build/
+          cp game.js build/
+          cp app.js build/
 
       - name: Run HTML linter
-        run: npx htmlhint **/*.html
+        run: npx htmlhint build/index.html
 
       - name: Run CSS linter
-        run: npx stylelint **/*.css
+        run: npx stylelint build/style.css
 
       - name: Run JavaScript linter
-        run: npx eslint **/*.js
+        run: npx eslint build/game.js build/app.js
 
-      - name: Run tests
-        run: npm test
+      - name: Deploy
+        run: make

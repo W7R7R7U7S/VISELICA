@@ -22,10 +22,16 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: npm build
+        run: npm install
+
+      - name: Install ESLint
+        run: npm install eslint --save-dev
         
-      - name: Install ESlint
-        run: npm install eslint-plugin-standard@latest --save-dev
+      - name: Install eslint-config-standard
+        run: npm install eslint-config-standard- --save-dev
+
+      - name: Install eslint-plugin-import
+        run: npm install eslint-plugin-import --save-dev
 
       - name: Build assets
         run: |

@@ -28,9 +28,9 @@ jobs:
         run: |
           mkdir -p build
           cp index.html build/
-          cp style.css build/
-          cp game.js build/
-          cp app.js build/
+          cp css/style.css build/
+          cp JS/game.js build/
+          cp JS/app.js build/
 
       - name: Run HTML linter
         run: npx htmlhint build/index.html

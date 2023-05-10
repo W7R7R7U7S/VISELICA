@@ -29,6 +29,9 @@ jobs:
         
       - name: Install eslint-config-standard-with-typescrip
         run: npm install eslint-config-standard-with-typescript --save-dev
+        
+      - name: Install eslint-config-standard-with-typescrip 2
+        run: npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
 
       - name: Install eslint-plugin-import
         run: npm install eslint-plugin-import --save-dev

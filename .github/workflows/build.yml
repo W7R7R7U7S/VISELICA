@@ -26,9 +26,6 @@ jobs:
 
       - name: Install ESLint
         run: npm install eslint --save-dev
-        
-      - name: Install eslint-config-standard
-        run: npm install eslint-config-standard- --save-dev
 
       - name: Install eslint-plugin-import
         run: npm install eslint-plugin-import --save-dev

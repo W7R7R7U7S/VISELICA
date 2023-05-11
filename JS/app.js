@@ -127,14 +127,7 @@ function updateHangman() {
 }
 // Обработчик события для кнопки "Угадать"
 document.getElementById('guessButton').addEventListener('click', guessLetter);
-updateHangman();    // Функция для обновления отображения оставшихся попыток
-function updateRemainingGuesses() {
-remainingGuessesElement.innerHTML = 'Попытки: ' + remainingGuesses;
-remainingGuessesElement.classList.add('blink');
-setTimeout(() => {
-    remainingGuessesElement.classList.remove('blink');
-    }, 1000)
-}
+updateHangman();
 // Функция для обновления отображения виселицы
 function updateHangman() {
     switch (remainingGuesses) {

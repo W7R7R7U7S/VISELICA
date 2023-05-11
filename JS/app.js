@@ -127,9 +127,6 @@ function updateHangman() {
 }
 // Обработчик события для кнопки "Угадать"
 document.getElementById('guessButton').addEventListener('click', guessLetter);
-// Инициализация отображения
-updateGuessedLetters();
-updateRemainingGuesses();
 updateHangman();    // Функция для обновления отображения оставшихся попыток
 function updateRemainingGuesses() {
 remainingGuessesElement.innerHTML = 'Попытки: ' + remainingGuesses;

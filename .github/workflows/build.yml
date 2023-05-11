@@ -45,6 +45,9 @@ jobs:
       - name: Install eslint-plugin-promise
         run: npm install eslint-plugin-promise --save-dev
         
+      - name: Install ESLint in JS
+        run: npx install eslint JS/app.js
+        
       - name: Fix app.js
         run: npx eslint --fix [JS/app.js]
         

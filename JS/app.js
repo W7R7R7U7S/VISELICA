@@ -1,9 +1,9 @@
 setTimeout("document.getElementById('StartWindow').style.display='block'");
 // Получаем ссылки на все кнопки
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll("button");
 // Добавляем обработчик событий на каждую кнопку
 buttons.forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
     });
 });
 function addLetter(letter) {
@@ -20,7 +20,7 @@ function startGame(theme) {
 }
 // Функция для скрытия модального окна выбра тем
 function closeStartWindow(){
-  StartWindow.style.display='none';
+  StartWindow.style.display="none";
 }
 // Массив для отслеживания всех угаданных букв
 var guessedLetters = [];
@@ -44,7 +44,7 @@ var modalWiner = document.getElementById("myModalWin");
 var span = document.getElementsByClassName("close")[0];
 // Функция для открытия модального окна проигрыша
 function openModalLost() {
-    var modalText = document.getElementById("modalText")
+    var modalText = document.getElementById("modalText");
     modalText.innerHTML = secretWord;
     modalLoser.style.display = "block";
 }
@@ -72,61 +72,61 @@ function startNewGameWiner() {
 }
 // Функция для обновления отображения угаданных букв
 function updateGuessedLetters() {
-    let displayString = '';
+    let displayString = "";
     for (let i = 0; i < secretWord.length; i++) {
       if (guessedLetters.includes(secretWord[i])) {
-        displayString += secretWord[i] + ' ';
+        displayString += secretWord[i] + " ";
       } else {
-        displayString += '_ ';
+        displayString += "_ ";
       }
     }
     secretWordElement.innerHTML = displayString;
 }
 // Функция для обновления отображения оставшихся попыток
 function updateRemainingGuesses() {
-    remainingGuessesElement.innerHTML = 'Попытки: ' + remainingGuesses;
-    remainingGuessesElement.classList.add('blink');
+    remainingGuessesElement.innerHTML = "Попытки: " + remainingGuesses;
+    remainingGuessesElement.classList.add("blink");
     setTimeout(() => {
-    remainingGuessesElement.classList.remove('blink');
-    }, 1000)
+    remainingGuessesElement.classList.remove("blink");
+    }, 1000);
 }
 // Функция для обновления отображения виселицы
 function updateHangman() {
     switch (remainingGuesses) {
     case 9:
-        base4Element.style.display = 'block';
+        base4Element.style.display = "block";
         break;
     case 8:
-        base3Element.style.display = 'block';
+        base3Element.style.display = "block";
         break;
     case 7:
-        base2Element.style.display = 'block';
+        base2Element.style.display = "block";
         break;
     case 6:
-        base1Element.style.display = 'block';
+        base1Element.style.display = "block";
         break;
     case 5:
-        headElement.style.display = 'block';
+        headElement.style.display = "block";
         break;
     case 4:
-        bodyElement.style.display = 'block';
+        bodyElement.style.display = "block";
         break;
     case 3:
-        leftArmElement.style.display = 'block';
+        leftArmElement.style.display = "block";
         break;
     case 2:
-        rightArmElement.style.display = 'block';
+        rightArmElement.style.display = "block";
         break;
     case 1:
-        leftLegElement.style.display = 'block';
+        leftLegElement.style.display = "block";
         break;
     case 0:
-        rightLegElement.style.display = 'block';
+        rightLegElement.style.display = "block";
         break;
     }
 }
 // Обработчик события для кнопки "Угадать"
-document.getElementById('guessButton').addEventListener('click', guessLetter);
+document.getElementById("guessButton").addEventListener("click", guessLetter);
 // Инициализация отображения
 updateGuessedLetters();
 updateRemainingGuesses();

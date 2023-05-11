@@ -38,7 +38,10 @@ jobs:
         
       - name: Install typescript
         run: npm install --save-dev typescript
-
+        
+      - name: Install eslint-plugin-n
+        run: npm install --save-dev eslint-plugin-n
+        
       - name: Build assets
         run: |
           mkdir -p build

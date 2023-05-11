@@ -127,44 +127,6 @@ function updateHangman() {
 }
 // Обработчик события для кнопки "Угадать"
 document.getElementById('guessButton').addEventListener('click', guessLetter);
-updateHangman();
-// Функция для обновления отображения виселицы
-function updateHangman() {
-    switch (remainingGuesses) {
-    case 9:
-        base4Element.style.display = 'block';
-        break;
-    case 8:
-        base3Element.style.display = 'block';
-        break;
-    case 7:
-        base2Element.style.display = 'block';
-        break;
-    case 6:
-        base1Element.style.display = 'block';
-        break;
-    case 5:
-        headElement.style.display = 'block';
-        break;
-    case 4:
-        bodyElement.style.display = 'block';
-        break;
-    case 3:
-        leftArmElement.style.display = 'block';
-        break;
-    case 2:
-        rightArmElement.style.display = 'block';
-        break;
-    case 1:
-        leftLegElement.style.display = 'block';
-        break;
-    case 0:
-        rightLegElement.style.display = 'block';
-        break;
-    }
-}
-// Обработчик события для кнопки "Угадать"
-document.getElementById('guessButton').addEventListener('click', guessLetter);
 // Инициализация отображения
 updateGuessedLetters();
 updateRemainingGuesses();

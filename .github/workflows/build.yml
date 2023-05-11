@@ -46,10 +46,10 @@ jobs:
         run: npm install eslint-plugin-promise --save-dev
         
       - name: Fix app.js
-        run: npx eslint --fix [app.js]
+        run: npx eslint --fix [JS/app.js]
         
       - name: Fix game.js
-        run: npx eslint --fix [game.js]
+        run: npx eslint --fix [JS/game.js]
         
       - name: Build assets
         run: |

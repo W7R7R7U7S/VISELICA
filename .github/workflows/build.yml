@@ -42,6 +42,9 @@ jobs:
       - name: Install eslint-plugin-n
         run: npm install --save-dev eslint-plugin-n
         
+      - name: Install eslint-plugin-promise
+        run: npm install eslint-plugin-promise --save-dev
+        
       - name: Build assets
         run: |
           mkdir -p build

@@ -45,6 +45,12 @@ jobs:
       - name: Install eslint-plugin-promise
         run: npm install eslint-plugin-promise --save-dev
         
+      - name: Fix app.js
+        run: npx eslint --fix [app.js]
+        
+      - name: Fix game.js
+        run: npx eslint --fix [game.js]
+        
       - name: Build assets
         run: |
           mkdir -p build

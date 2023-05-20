@@ -32,10 +32,10 @@
       }
       /* Стили для отображения виселицы */
       #hangman {
-        width: 300px;
+        width: 315px;
         height: 300px;
         margin: 50px;
-        margin-left: 25%;
+        margin-left: 40%;
         border: 1px solid black;
         position: sticky;
         background-color: white;
@@ -237,13 +237,26 @@
       #remainingGuesses {
         font-size: 1.5em;
         font-family: Arial;
-        text-align: right;
+        left: 50%;
         margin-right: 25%;
       }
 
       #themeContainer {
-        margin-top: auto;
         font-weight: bold;
+        font-size: 1.3em;
+        color: rgb(137, 124, 197);
+      }
+
+      #attemptsAndTheme {
+        width: 700px;
+        height: 35px;
+        margin: 50px;
+        margin-left: 45%;
+        position: sticky;
+      }
+
+      #attemptsAndTheme div {
+        position: absolute;
       }
 
       /* Стили для анимации мигания количества попыток*/
@@ -260,8 +273,10 @@
   </head>
   <body>
     <h1>Игра "Виселица"</h1>
-    <p id="remainingGuesses"></p>
-    <div id="themeContainer"></div>
+    <div id="attemptsAndTheme">
+      <div id="remainingGuesses"></div>
+      <div id="themeContainer"></div>
+    </div>
     <div id="hangman">
       <div id="base1"></div> 
       <div id="base2"></div> 
@@ -363,6 +378,7 @@
       }
       // Переменная для хранения выбранного слова
       var secretWord = [];
+      // Переменная для хранения названия темы
       var selectedTheme;
       // Списки слов для каждой темы
       var themes = {
@@ -382,9 +398,10 @@
         showSelectedTheme();
         updateGuessedLetters();
       }
+      // Функция для вывода названия выбранной темы
       function showSelectedTheme(){
         const themeContainer = document.getElementById('themeContainer');
-        themeContainer.textContent = 'Выбранная тема: ' + selectedTheme;
+        themeContainer.textContent = 'Тема: ' + selectedTheme;
       }
       // Функция для скрытия модального окна выбра тем
       function closeStartWindow(){

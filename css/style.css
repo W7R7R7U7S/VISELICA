@@ -235,6 +235,27 @@ background-color: rgba(0,0,0,0.4);
   margin-right: 25%;
 }
 
+/* Стили для вывода наименования выбренной темы*/
+#themeContainer {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: rgb(137, 124, 197);
+}
+
+/* Стили для отображения попытки и темы в одном блоке */
+#attemptsAndTheme {
+  width: 700px;
+  height: 35px;
+  margin: 50px;
+  margin-left: 45%;
+  position: sticky;
+  border: 2px solid black;
+}
+
+#attemptsAndTheme div {
+  position: absolute;
+}
+
 /* Стили для анимации мигания количества попыток*/
 @keyframes blink {
   0%{ color: red; }

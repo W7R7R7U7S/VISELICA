@@ -11,16 +11,25 @@ function addLetter(letter) {
 var inputField = document.getElementById("guess");
 inputField.value = letter;
 }
+// Переменная для хранения названия темы
+var selectedTheme = '';
 // Функция выбора случайного слова из списка
 function startGame(theme) {
     var words = themes[theme];
+    selectedTheme = theme;
     secretWord = words[Math.floor(Math.random() * words.length)];
     closeStartWindow();
+    showSelectedTheme();
     updateGuessedLetters();
+}
+// Функция для вывода названия выбранной темы
+function showSelectedTheme(){
+    const themeContainer = document.getElementById('themeContainer');
+    themeContainer.textContent = 'Тема: ' + selectedTheme;
 }
 // Функция для скрытия модального окна выбра тем
 function closeStartWindow(){
-  StartWindow.style.display="none";
+    StartWindow.style.display="none";
 }
 // Массив для отслеживания всех угаданных букв
 var guessedLetters = [];
@@ -28,8 +37,8 @@ var guessedLetters = [];
 var guessedLettersFalse = [];
 // Функция для блокировки кнопки при верно угаданной буквы
 function blockButtonTrue(button) {
-button.classList.add("usedTrue");
-button.disabled = true;
+    button.classList.add("usedTrue");
+    button.disabled = true;
 }
 // Функция дял блокировки кнопки при не верно угаданной буквы
 function blockButtonFalse(button) {
@@ -74,15 +83,15 @@ function startNewGameWiner() {
 function updateGuessedLetters() {
     let displayString = "";
     for (let i = 0; i < secretWord.length; i++) {
-      if (guessedLetters.includes(secretWord[i])) {
-        displayString += secretWord[i] + " ";
-      } else {
-        displayString += "_ ";
-      }
+        if (guessedLetters.includes(secretWord[i])) {
+            displayString += secretWord[i] + " ";
+        } else {
+            displayString += "_ ";
+        }
     }
     secretWordElement.innerHTML = displayString;
 }
-// Функция для обновления отображения оставшихся попыток
+// Функция для обновления отображения оставшихся попыток + мигание
 function updateRemainingGuesses() {
     remainingGuessesElement.innerHTML = "Попытки: " + remainingGuesses;
     remainingGuessesElement.classList.add("blink");

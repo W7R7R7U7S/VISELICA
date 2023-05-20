@@ -241,6 +241,11 @@
         margin-right: 25%;
       }
 
+      #themeContainer {
+        margin-top: auto;
+        font-weight: bold;
+      }
+
       /* Стили для анимации мигания количества попыток*/
       @keyframes blink {
         0%{ color: red; }
@@ -256,6 +261,7 @@
   <body>
     <h1>Игра "Виселица"</h1>
     <p id="remainingGuesses"></p>
+    <div id="themeContainer"></div>
     <div id="hangman">
       <div id="base1"></div> 
       <div id="base2"></div> 
@@ -357,6 +363,7 @@
       }
       // Переменная для хранения выбранного слова
       var secretWord = [];
+      var selectedTheme;
       // Списки слов для каждой темы
       var themes = {
       'Фрукты' : ['БАНАН', 'АПЕЛЬСИН', 'АНАНАС', 'АРБУЗ', 'ВИНОГРАД', 'ГРАНАТ', 'ЛИМОН', 'МАНГО', 'ПЕРСИК'],
@@ -366,11 +373,18 @@
       'Страны' : ['АВСТРАЛИЯ', 'АРМЕНИЯ', 'БЕЛОРУССИЯ', 'БРАЗИЛИЯ', 'ВЕНГРИЯ', 'ГВИНЕЯ', 'ГРЕЦИЯ', 'ДАНИЯ', 'ИРАН', 'КАНАДА', 'КОЛУМБИЯ', 'КОРЕЯ', 'ЯПОНИЯ', 'ВЕЛИКОБРИТАНИЯ']
       }
       // Функция выбора случайного слова из списка
+      var selectedTheme = '';
       function startGame(theme) {
         var words = themes[theme];
+        selectedTheme = theme;
         secretWord = words[Math.floor(Math.random() * words.length)];
         closeStartWindow();
+        showSelectedTheme();
         updateGuessedLetters();
+      }
+      function showSelectedTheme(){
+        const themeContainer = document.getElementById('themeContainer');
+        themeContainer.textContent = 'Выбранная тема: ' + selectedTheme;
       }
       // Функция для скрытия модального окна выбра тем
       function closeStartWindow(){
@@ -521,7 +535,7 @@
         } return true; 
     }
   
-    // функция для обновления отображения оставшихся попыток
+    // функция для обновления отображения оставшихся попыток + мигание
     function updateRemainingGuesses() {
       remainingGuessesElement.innerHTML = 'Попытки: ' + remainingGuesses;
       remainingGuessesElement.classList.add('blink');

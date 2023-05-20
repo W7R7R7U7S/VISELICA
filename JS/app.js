@@ -1,6 +1,6 @@
 setTimeout("document.getElementById('StartWindow').style.display='block'");
 // Получаем ссылки на все кнопки
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll('button');
 // Добавляем обработчик событий на каждую кнопку
 buttons.forEach((button) => {
     button.addEventListener("click", () => {

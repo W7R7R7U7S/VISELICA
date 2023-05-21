@@ -3,7 +3,7 @@
         "browser": true,
         "es2021": true
     },
-    "extends": "standard-with-typescript",
+    "extends": "standard",
     "overrides": [
     ],
     "parserOptions": {
@@ -11,6 +11,5 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-console": "off"
     }
 }

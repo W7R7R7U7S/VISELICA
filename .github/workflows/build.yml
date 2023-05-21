@@ -64,6 +64,3 @@ jobs:
 
       - name: Run JavaScript linter
         run: npx eslint build/game.js build/app.js
-
-      - name: Deploy
-        run: make

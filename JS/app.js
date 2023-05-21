@@ -1,4 +1,27 @@
-setTimeout("document.getElementById('StartWindow').style.display='block'")
+/* eslint-disable no-unused-vars */
+const {
+  secretWordElement,
+  themes,
+  secretWord,
+  StartWindow,
+  remainingGuessesElement,
+  remainingGuesses,
+  base4Element,
+  base3Element,
+  base2Element,
+  base1Element,
+  headElement,
+  bodyElement,
+  leftArmElement,
+  rightArmElement,
+  leftLegElement,
+  rightLegElement,
+  guessLetter
+} = require('./game.js')
+
+setTimeout(() => {
+  document.getElementById('StartWindow').style.display = 'block'
+})
 // Получаем ссылки на все кнопки
 const buttons = document.querySelectorAll('button')
 // Добавляем обработчик событий на каждую кнопку
@@ -6,17 +29,20 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => {
   })
 })
+// eslint-disable-next-line no-unused-vars
 function addLetter (letter) {
 // Получаем поле ввода и записываем в него новую букву
   const inputField = document.getElementById('guess')
   inputField.value = letter
 }
-// Переменная для хранения названия темы
+// Переменная для хранения названия темыnpx eslint JS/app.js
 let selectedTheme = ''
 // Функция выбора случайного слова из списка
+// eslint-disable-next-line no-unused-vars
 function startGame (theme) {
   const words = themes[theme]
   selectedTheme = theme
+  // eslint-disable-next-line no-const-assign
   secretWord = words[Math.floor(Math.random() * words.length)]
   closeStartWindow()
   showSelectedTheme()

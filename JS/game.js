@@ -1,3 +1,13 @@
+/* eslint-disable no-unused-vars */
+const {
+  updateGuessedLetters,
+  blockButtonTrue,
+  openModalWin,
+  blockButtonFalse,
+  updateRemainingGuesses,
+  openModalLost,
+  updateHangman
+} = require('./app.js')
 // Переменная для хранения выбранного слова
 const secretWord = []
 // Списки слов для каждой темы
